@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  postgres-dev:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_DB: sagas_dev
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5439:5432
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.36
+    restart: always
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+    ports:
+      - 4318:4318
+      - 16686:16686

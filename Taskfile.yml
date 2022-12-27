@@ -1,0 +1,13 @@
+version: "3"
+
+tasks:
+  dev:
+    cmds:
+      - reflex --regex='\.go$' --decoration=none --start-service -- sh -c 'go run ./cmd'
+    silent: true
+
+  lint:
+    cmds:
+      - gofmt -l -e ./
+      - go vet ./...
+    silent: true
